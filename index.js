@@ -5,6 +5,8 @@ const videoModule = require('./video');
 const { exec } = require('child_process');
 
 const app = express();
+// Serve static files (videos and images) from the 'public' folder
+app.use(express.static('public'));
 const port = process.env.PORT || 3000;
 
 app.get('/generate-video', async (req, res) => {
@@ -27,6 +29,16 @@ app.get('/check-ffmpeg', (req, res) => {
       res.status(200).json({ message: 'ffmpeg is installed.', versionInfo: stdout });
     }
   });
+});
+
+// Serve the video file
+app.get('/video', (req, res) => {
+  res.sendFile(__dirname + '/public/output.mp4');
+});
+
+// Serve the screenshot/image file
+app.get('/image', (req, res) => {
+  res.sendFile(__dirname + '/public/screenshots/screenshot.png');
 });
 
 app.get('/', (req, res) => {
