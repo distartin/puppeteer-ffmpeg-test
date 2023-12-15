@@ -2,6 +2,7 @@
 const express = require('express');
 const screenshotModule = require('./screenshot');
 const videoModule = require('./video');
+const { exec } = require('child_process');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,7 +18,18 @@ app.get('/generate-video', async (req, res) => {
   }
 });
 
-app.get('', (req, res) => {
+app.get('/check-ffmpeg', (req, res) => {
+  // Run the 'ffmpeg' command with the '-version' option to check if it's installed
+  exec('ffmpeg -version', (error, stdout, stderr) => {
+    if (error) {
+      res.status(500).json({ message: 'ffmpeg is not installed or an error occurred.' });
+    } else {
+      res.status(200).json({ message: 'ffmpeg is installed.', versionInfo: stdout });
+    }
+  });
+});
+
+app.get('/', (req, res) => {
     res.status(200).json({ message: "It's working." });
 });
 
