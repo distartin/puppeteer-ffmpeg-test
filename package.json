@@ -1,0 +1,20 @@
+{
+    "name": "puppeteer-ffmpeg-test",
+    "version": "1.0.0",
+    "description": "Test project using Puppeteer and ffmpeg",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "keywords": [
+        "puppeteer",
+        "ffmpeg",
+        "test"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+        "puppeteer": "^10.4.0",
+        "ffmpeg-static": "^4.4.0"
+    }
+}
