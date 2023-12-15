@@ -1,6 +1,7 @@
 // screenshot.js
 const puppeteer = require('puppeteer');
 const config = require('./config');
+const path = require('path');
 
 async function captureScreenshot() {
   const browser = await puppeteer.launch({
