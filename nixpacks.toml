@@ -10,5 +10,3 @@ aptPkgs = [
   "fonts-urw-base35",
 ]
 
-[start]
-cmd = "ffmpeg 2>&1"
